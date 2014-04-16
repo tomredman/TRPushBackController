@@ -1,0 +1,614 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E2A00A818FE003000C227E4 /* FlickrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A00A618FE003000C227E4 /* FlickrViewController.m */; };
+		8E2A00A918FE003000C227E4 /* FlickrViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2A00A718FE003000C227E4 /* FlickrViewController.xib */; };
+		8E2A00B218FE10F900C227E4 /* FlickrTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A00B018FE10F900C227E4 /* FlickrTableCell.m */; };
+		8E2A00B318FE10F900C227E4 /* FlickrTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2A00B118FE10F900C227E4 /* FlickrTableCell.xib */; };
+		8E2A00B718FE12B000C227E4 /* FlickrManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A00B618FE12B000C227E4 /* FlickrManager.m */; };
+		8E2A00BA18FE12D300C227E4 /* FlickrImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A00B918FE12D300C227E4 /* FlickrImage.m */; };
+		8E2A00BE18FE155000C227E4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8E2A00BD18FE155000C227E4 /* Podfile */; };
+		8E7B4EA518FCB88200975EED /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7B4EA418FCB88200975EED /* QuartzCore.framework */; };
+		8E7FE15D18FB4FBE002FD27E /* TRPushBackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FE15B18FB4FBE002FD27E /* TRPushBackController.m */; };
+		8E7FE15E18FB4FBF002FD27E /* TRPushBackController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E7FE15C18FB4FBE002FD27E /* TRPushBackController.xib */; };
+		8EDEE38718FE221C001FCA1E /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EDEE38618FE221C001FCA1E /* placeholder.jpg */; };
+		8EDEE38A18FE2DEF001FCA1E /* buffer.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EDEE38818FE2DEF001FCA1E /* buffer.png */; };
+		8EDEE38B18FE2DEF001FCA1E /* buffer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EDEE38918FE2DEF001FCA1E /* buffer@2x.png */; };
+		8EDEE38E18FE2F9B001FCA1E /* BufferManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDEE38D18FE2F9B001FCA1E /* BufferManager.m */; };
+		8EEB778918FB4CD3008C39C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEB778818FB4CD3008C39C7 /* Foundation.framework */; };
+		8EEB778B18FB4CD3008C39C7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEB778A18FB4CD3008C39C7 /* CoreGraphics.framework */; };
+		8EEB778D18FB4CD3008C39C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEB778C18FB4CD3008C39C7 /* UIKit.framework */; };
+		8EEB779318FB4CD3008C39C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EEB779118FB4CD3008C39C7 /* InfoPlist.strings */; };
+		8EEB779518FB4CD3008C39C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEB779418FB4CD3008C39C7 /* main.m */; };
+		8EEB779918FB4CD3008C39C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEB779818FB4CD3008C39C7 /* AppDelegate.m */; };
+		8EEB77A118FB4CD3008C39C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EEB77A018FB4CD3008C39C7 /* Images.xcassets */; };
+		8EEB77A818FB4CD3008C39C7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEB77A718FB4CD3008C39C7 /* XCTest.framework */; };
+		8EEB77A918FB4CD3008C39C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEB778818FB4CD3008C39C7 /* Foundation.framework */; };
+		8EEB77AA18FB4CD3008C39C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEB778C18FB4CD3008C39C7 /* UIKit.framework */; };
+		8EEB77B218FB4CD3008C39C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EEB77B018FB4CD3008C39C7 /* InfoPlist.strings */; };
+		8EEB77B418FB4CD3008C39C7 /* TRPushBackControllerExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEB77B318FB4CD3008C39C7 /* TRPushBackControllerExampleTests.m */; };
+		AB0B732FD3CB401090C911C7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A401367104B4E5688993D82 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8EEB77AB18FB4CD3008C39C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EEB777D18FB4CD3008C39C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8EEB778418FB4CD3008C39C7;
+			remoteInfo = TRPushBackControllerExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		15C018596EE2481EA60EF298 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		7A401367104B4E5688993D82 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E2A00A518FE003000C227E4 /* FlickrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrViewController.h; sourceTree = "<group>"; };
+		8E2A00A618FE003000C227E4 /* FlickrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrViewController.m; sourceTree = "<group>"; };
+		8E2A00A718FE003000C227E4 /* FlickrViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlickrViewController.xib; sourceTree = "<group>"; };
+		8E2A00AF18FE10F900C227E4 /* FlickrTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrTableCell.h; sourceTree = "<group>"; };
+		8E2A00B018FE10F900C227E4 /* FlickrTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTableCell.m; sourceTree = "<group>"; };
+		8E2A00B118FE10F900C227E4 /* FlickrTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlickrTableCell.xib; sourceTree = "<group>"; };
+		8E2A00B518FE12B000C227E4 /* FlickrManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrManager.h; sourceTree = "<group>"; };
+		8E2A00B618FE12B000C227E4 /* FlickrManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrManager.m; sourceTree = "<group>"; };
+		8E2A00B818FE12D300C227E4 /* FlickrImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrImage.h; sourceTree = "<group>"; };
+		8E2A00B918FE12D300C227E4 /* FlickrImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrImage.m; sourceTree = "<group>"; };
+		8E2A00BD18FE155000C227E4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8E7B4EA418FCB88200975EED /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8E7FE15A18FB4FBE002FD27E /* TRPushBackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRPushBackController.h; sourceTree = "<group>"; };
+		8E7FE15B18FB4FBE002FD27E /* TRPushBackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRPushBackController.m; sourceTree = "<group>"; };
+		8E7FE15C18FB4FBE002FD27E /* TRPushBackController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRPushBackController.xib; sourceTree = "<group>"; };
+		8EDEE38618FE221C001FCA1E /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
+		8EDEE38818FE2DEF001FCA1E /* buffer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buffer.png; sourceTree = "<group>"; };
+		8EDEE38918FE2DEF001FCA1E /* buffer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buffer@2x.png"; sourceTree = "<group>"; };
+		8EDEE38C18FE2F9B001FCA1E /* BufferManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferManager.h; sourceTree = "<group>"; };
+		8EDEE38D18FE2F9B001FCA1E /* BufferManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BufferManager.m; sourceTree = "<group>"; };
+		8EEB778518FB4CD3008C39C7 /* TRPushBackControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRPushBackControllerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EEB778818FB4CD3008C39C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8EEB778A18FB4CD3008C39C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8EEB778C18FB4CD3008C39C7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8EEB779018FB4CD3008C39C7 /* TRPushBackControllerExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TRPushBackControllerExample-Info.plist"; sourceTree = "<group>"; };
+		8EEB779218FB4CD3008C39C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8EEB779418FB4CD3008C39C7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8EEB779618FB4CD3008C39C7 /* TRPushBackControllerExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TRPushBackControllerExample-Prefix.pch"; sourceTree = "<group>"; };
+		8EEB779718FB4CD3008C39C7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8EEB779818FB4CD3008C39C7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8EEB77A018FB4CD3008C39C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8EEB77A618FB4CD3008C39C7 /* TRPushBackControllerExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TRPushBackControllerExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EEB77A718FB4CD3008C39C7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		8EEB77AF18FB4CD3008C39C7 /* TRPushBackControllerExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TRPushBackControllerExampleTests-Info.plist"; sourceTree = "<group>"; };
+		8EEB77B118FB4CD3008C39C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8EEB77B318FB4CD3008C39C7 /* TRPushBackControllerExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRPushBackControllerExampleTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8EEB778218FB4CD3008C39C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E7B4EA518FCB88200975EED /* QuartzCore.framework in Frameworks */,
+				8EEB778B18FB4CD3008C39C7 /* CoreGraphics.framework in Frameworks */,
+				8EEB778D18FB4CD3008C39C7 /* UIKit.framework in Frameworks */,
+				8EEB778918FB4CD3008C39C7 /* Foundation.framework in Frameworks */,
+				AB0B732FD3CB401090C911C7 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8EEB77A318FB4CD3008C39C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EEB77A818FB4CD3008C39C7 /* XCTest.framework in Frameworks */,
+				8EEB77AA18FB4CD3008C39C7 /* UIKit.framework in Frameworks */,
+				8EEB77A918FB4CD3008C39C7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8E2A00A218FDFFB900C227E4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E2A00A518FE003000C227E4 /* FlickrViewController.h */,
+				8E2A00A618FE003000C227E4 /* FlickrViewController.m */,
+				8E2A00A718FE003000C227E4 /* FlickrViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8E2A00A318FDFFC000C227E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E2A00AF18FE10F900C227E4 /* FlickrTableCell.h */,
+				8E2A00B018FE10F900C227E4 /* FlickrTableCell.m */,
+				8E2A00B118FE10F900C227E4 /* FlickrTableCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		8E2A00A418FDFFC600C227E4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E2A00B818FE12D300C227E4 /* FlickrImage.h */,
+				8E2A00B918FE12D300C227E4 /* FlickrImage.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		8E2A00B418FE129C00C227E4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8E2A00B518FE12B000C227E4 /* FlickrManager.h */,
+				8E2A00B618FE12B000C227E4 /* FlickrManager.m */,
+				8EDEE38C18FE2F9B001FCA1E /* BufferManager.h */,
+				8EDEE38D18FE2F9B001FCA1E /* BufferManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		8EDEE37518FE1DD7001FCA1E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8EDEE38818FE2DEF001FCA1E /* buffer.png */,
+				8EDEE38918FE2DEF001FCA1E /* buffer@2x.png */,
+				8EDEE38618FE221C001FCA1E /* placeholder.jpg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		8EEB777C18FB4CD3008C39C7 = {
+			isa = PBXGroup;
+			children = (
+				8EEB77BD18FB4CEE008C39C7 /* TRPushBackController */,
+				8EEB778E18FB4CD3008C39C7 /* TRPushBackControllerExample */,
+				8EEB77AD18FB4CD3008C39C7 /* TRPushBackControllerExampleTests */,
+				8EEB778718FB4CD3008C39C7 /* Frameworks */,
+				8EEB778618FB4CD3008C39C7 /* Products */,
+				15C018596EE2481EA60EF298 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		8EEB778618FB4CD3008C39C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8EEB778518FB4CD3008C39C7 /* TRPushBackControllerExample.app */,
+				8EEB77A618FB4CD3008C39C7 /* TRPushBackControllerExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8EEB778718FB4CD3008C39C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E7B4EA418FCB88200975EED /* QuartzCore.framework */,
+				8EEB778818FB4CD3008C39C7 /* Foundation.framework */,
+				8EEB778A18FB4CD3008C39C7 /* CoreGraphics.framework */,
+				8EEB778C18FB4CD3008C39C7 /* UIKit.framework */,
+				8EEB77A718FB4CD3008C39C7 /* XCTest.framework */,
+				7A401367104B4E5688993D82 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EEB778E18FB4CD3008C39C7 /* TRPushBackControllerExample */ = {
+			isa = PBXGroup;
+			children = (
+				8E2A00BD18FE155000C227E4 /* Podfile */,
+				8E2A00B418FE129C00C227E4 /* Managers */,
+				8EEB779718FB4CD3008C39C7 /* AppDelegate.h */,
+				8EEB779818FB4CD3008C39C7 /* AppDelegate.m */,
+				8E2A00A218FDFFB900C227E4 /* Controllers */,
+				8E2A00A318FDFFC000C227E4 /* Views */,
+				8E2A00A418FDFFC600C227E4 /* Models */,
+				8EDEE37518FE1DD7001FCA1E /* Resources */,
+				8EEB77A018FB4CD3008C39C7 /* Images.xcassets */,
+				8EEB778F18FB4CD3008C39C7 /* Supporting Files */,
+			);
+			path = TRPushBackControllerExample;
+			sourceTree = "<group>";
+		};
+		8EEB778F18FB4CD3008C39C7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8EEB779018FB4CD3008C39C7 /* TRPushBackControllerExample-Info.plist */,
+				8EEB779118FB4CD3008C39C7 /* InfoPlist.strings */,
+				8EEB779418FB4CD3008C39C7 /* main.m */,
+				8EEB779618FB4CD3008C39C7 /* TRPushBackControllerExample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8EEB77AD18FB4CD3008C39C7 /* TRPushBackControllerExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				8EEB77B318FB4CD3008C39C7 /* TRPushBackControllerExampleTests.m */,
+				8EEB77AE18FB4CD3008C39C7 /* Supporting Files */,
+			);
+			path = TRPushBackControllerExampleTests;
+			sourceTree = "<group>";
+		};
+		8EEB77AE18FB4CD3008C39C7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8EEB77AF18FB4CD3008C39C7 /* TRPushBackControllerExampleTests-Info.plist */,
+				8EEB77B018FB4CD3008C39C7 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8EEB77BD18FB4CEE008C39C7 /* TRPushBackController */ = {
+			isa = PBXGroup;
+			children = (
+				8E7FE15A18FB4FBE002FD27E /* TRPushBackController.h */,
+				8E7FE15B18FB4FBE002FD27E /* TRPushBackController.m */,
+				8E7FE15C18FB4FBE002FD27E /* TRPushBackController.xib */,
+			);
+			name = TRPushBackController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8EEB778418FB4CD3008C39C7 /* TRPushBackControllerExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EEB77B718FB4CD3008C39C7 /* Build configuration list for PBXNativeTarget "TRPushBackControllerExample" */;
+			buildPhases = (
+				A4FAA55EF6EF485490409BC6 /* Check Pods Manifest.lock */,
+				8EEB778118FB4CD3008C39C7 /* Sources */,
+				8EEB778218FB4CD3008C39C7 /* Frameworks */,
+				8EEB778318FB4CD3008C39C7 /* Resources */,
+				F152D1A20DFE4A86A2F36F6C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TRPushBackControllerExample;
+			productName = TRPushBackControllerExample;
+			productReference = 8EEB778518FB4CD3008C39C7 /* TRPushBackControllerExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8EEB77A518FB4CD3008C39C7 /* TRPushBackControllerExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EEB77BA18FB4CD3008C39C7 /* Build configuration list for PBXNativeTarget "TRPushBackControllerExampleTests" */;
+			buildPhases = (
+				8EEB77A218FB4CD3008C39C7 /* Sources */,
+				8EEB77A318FB4CD3008C39C7 /* Frameworks */,
+				8EEB77A418FB4CD3008C39C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8EEB77AC18FB4CD3008C39C7 /* PBXTargetDependency */,
+			);
+			name = TRPushBackControllerExampleTests;
+			productName = TRPushBackControllerExampleTests;
+			productReference = 8EEB77A618FB4CD3008C39C7 /* TRPushBackControllerExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8EEB777D18FB4CD3008C39C7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Tom Redman";
+				TargetAttributes = {
+					8EEB77A518FB4CD3008C39C7 = {
+						TestTargetID = 8EEB778418FB4CD3008C39C7;
+					};
+				};
+			};
+			buildConfigurationList = 8EEB778018FB4CD3008C39C7 /* Build configuration list for PBXProject "TRPushBackControllerExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8EEB777C18FB4CD3008C39C7;
+			productRefGroup = 8EEB778618FB4CD3008C39C7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8EEB778418FB4CD3008C39C7 /* TRPushBackControllerExample */,
+				8EEB77A518FB4CD3008C39C7 /* TRPushBackControllerExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8EEB778318FB4CD3008C39C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E2A00BE18FE155000C227E4 /* Podfile in Resources */,
+				8E2A00B318FE10F900C227E4 /* FlickrTableCell.xib in Resources */,
+				8E7FE15E18FB4FBF002FD27E /* TRPushBackController.xib in Resources */,
+				8EEB77A118FB4CD3008C39C7 /* Images.xcassets in Resources */,
+				8EDEE38A18FE2DEF001FCA1E /* buffer.png in Resources */,
+				8EDEE38B18FE2DEF001FCA1E /* buffer@2x.png in Resources */,
+				8EEB779318FB4CD3008C39C7 /* InfoPlist.strings in Resources */,
+				8E2A00A918FE003000C227E4 /* FlickrViewController.xib in Resources */,
+				8EDEE38718FE221C001FCA1E /* placeholder.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8EEB77A418FB4CD3008C39C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EEB77B218FB4CD3008C39C7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A4FAA55EF6EF485490409BC6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F152D1A20DFE4A86A2F36F6C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8EEB778118FB4CD3008C39C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EEB779918FB4CD3008C39C7 /* AppDelegate.m in Sources */,
+				8E2A00BA18FE12D300C227E4 /* FlickrImage.m in Sources */,
+				8E7FE15D18FB4FBE002FD27E /* TRPushBackController.m in Sources */,
+				8E2A00B718FE12B000C227E4 /* FlickrManager.m in Sources */,
+				8EEB779518FB4CD3008C39C7 /* main.m in Sources */,
+				8E2A00A818FE003000C227E4 /* FlickrViewController.m in Sources */,
+				8E2A00B218FE10F900C227E4 /* FlickrTableCell.m in Sources */,
+				8EDEE38E18FE2F9B001FCA1E /* BufferManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8EEB77A218FB4CD3008C39C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EEB77B418FB4CD3008C39C7 /* TRPushBackControllerExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8EEB77AC18FB4CD3008C39C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8EEB778418FB4CD3008C39C7 /* TRPushBackControllerExample */;
+			targetProxy = 8EEB77AB18FB4CD3008C39C7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8EEB779118FB4CD3008C39C7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EEB779218FB4CD3008C39C7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8EEB77B018FB4CD3008C39C7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EEB77B118FB4CD3008C39C7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8EEB77B518FB4CD3008C39C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8EEB77B618FB4CD3008C39C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8EEB77B818FB4CD3008C39C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15C018596EE2481EA60EF298 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TRPushBackControllerExample/TRPushBackControllerExample-Prefix.pch";
+				INFOPLIST_FILE = "TRPushBackControllerExample/TRPushBackControllerExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8EEB77B918FB4CD3008C39C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15C018596EE2481EA60EF298 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TRPushBackControllerExample/TRPushBackControllerExample-Prefix.pch";
+				INFOPLIST_FILE = "TRPushBackControllerExample/TRPushBackControllerExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		8EEB77BB18FB4CD3008C39C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TRPushBackControllerExample.app/TRPushBackControllerExample";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TRPushBackControllerExample/TRPushBackControllerExample-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TRPushBackControllerExampleTests/TRPushBackControllerExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		8EEB77BC18FB4CD3008C39C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TRPushBackControllerExample.app/TRPushBackControllerExample";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TRPushBackControllerExample/TRPushBackControllerExample-Prefix.pch";
+				INFOPLIST_FILE = "TRPushBackControllerExampleTests/TRPushBackControllerExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8EEB778018FB4CD3008C39C7 /* Build configuration list for PBXProject "TRPushBackControllerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EEB77B518FB4CD3008C39C7 /* Debug */,
+				8EEB77B618FB4CD3008C39C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8EEB77B718FB4CD3008C39C7 /* Build configuration list for PBXNativeTarget "TRPushBackControllerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EEB77B818FB4CD3008C39C7 /* Debug */,
+				8EEB77B918FB4CD3008C39C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8EEB77BA18FB4CD3008C39C7 /* Build configuration list for PBXNativeTarget "TRPushBackControllerExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EEB77BB18FB4CD3008C39C7 /* Debug */,
+				8EEB77BC18FB4CD3008C39C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8EEB777D18FB4CD3008C39C7 /* Project object */;
+}
