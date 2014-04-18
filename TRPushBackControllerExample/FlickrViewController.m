@@ -39,7 +39,7 @@
     [self configureNavigationButtons];
     [self configureTable];
     [self configureFlickrManager];
-    [self reloadImagesWithPushBack:NO];
+    [self reloadImagesWithQuery:nil pushBack:NO];
 }
 
 - (void)dealloc
@@ -71,7 +71,6 @@
     self.navigationItem.titleView = navTitleButton;
 }
 
-
 - (void)configureNavigationButtons
 {
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(reloadImages)];
@@ -91,7 +90,7 @@
 
 - (void)showRefreshHUD
 {
-    [SVProgressHUD showWithStatus:@"Getting fresh pics"];
+    [SVProgressHUD showWithStatus:@"Getting fresh pix"];
 }
 
 - (void)dismissRefreshHUD
@@ -139,7 +138,7 @@
     [self pushBackShowHUD:NO];
 }
 
-- (void)reloadImagesWithPushBack:(BOOL)pushBackToggle
+- (void)reloadImagesWithQuery:(NSString *)query pushBack:(BOOL)pushBackToggle
 {
     if (pushBackToggle) {
         [self pushBackShowHUD:YES];
@@ -152,7 +151,7 @@
     
     NSDate *startTime = [NSDate date];
     
-    [self.flickrManager getNewImages:^(NSArray *newFlickrImages) {
+    [self.flickrManager getNewImagesWithSearchTerm:query completion:^(NSArray *newFlickrImages) {
         
         /**
          *  Handle bad Flickr feed
@@ -194,6 +193,7 @@
 - (void)newImagesSuccess:(NSArray *)newImages delay:(CGFloat)delay
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.indicator stopAnimating];
         self.flickrs = newImages;
         [self.table reloadData];
         [self pullForwardCancelHUD:YES];
@@ -202,7 +202,12 @@
 
 - (void)reloadImages
 {
-    [self reloadImagesWithPushBack:YES];
+    [self reloadImagesWithQuery:nil pushBack:YES];
+}
+
+- (void)reloadImagesWithQuery:(NSString *)query
+{
+    [self reloadImagesWithQuery:query pushBack:YES];
 }
 
 - (void)bufferButtonTapped:(UIButton *)button
@@ -224,12 +229,14 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.searchBar resignFirstResponder];
     return NO;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return kFlickrTableCellHeight;
+    FlickrImage *flickrImage = [self.flickrs objectAtIndex:indexPath.row];
+    return [flickrImage height];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -245,9 +252,22 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FlickrTableCell *flickrCell = (FlickrTableCell *)cell;
+    
     [flickrCell.bufferButton setAlpha:0.0];
+    [flickrCell.photographerLabel setAlpha:0.0];
+    [flickrCell.titleLabel setAlpha:0.0];
+    
     [UIView animateKeyframesWithDuration:1.0 delay:1.5 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
                 [flickrCell.bufferButton setAlpha:1.0];
+    } completion:nil];
+    
+    [UIView animateKeyframesWithDuration:1.0 delay:2.5 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+        if (flickrCell.photographerLabel.text) {
+            [flickrCell.photographerLabel setAlpha:1.0];
+        }
+        if (flickrCell.titleLabel.text) {
+            [flickrCell.titleLabel setAlpha:1.0];
+        }
     } completion:nil];
 }
 
@@ -258,6 +278,20 @@
     __block FlickrImage *flickrImage = [self.flickrs objectAtIndex:indexPath.row];
     
     [cell.bufferButton setAlpha:0.0];
+    
+    if (flickrImage.photographer) {
+        cell.photographerLabel.text = [NSString stringWithFormat:@"  by %@", flickrImage.photographer];
+    }
+    else {
+        cell.photographerLabel.text = nil;
+    }
+    
+    if (flickrImage.title) {
+        cell.titleLabel.text = [NSString stringWithFormat:@"  %@", flickrImage.title];
+    }
+    else {
+        cell.titleLabel.text = nil;
+    }
     
     if (![[cell.bufferButton allTargets] containsObject:self]) {
         [cell.bufferButton addTarget:self action:@selector(bufferButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -275,11 +309,16 @@
             
             flickrImage.image = image;
             
+            //Update height to match new image
+            [self.table beginUpdates];
+            [self.table endUpdates];
+            
             [UIView transitionWithView:blockCell.flickrImage
                               duration:1.0f
                                options:UIViewAnimationOptionTransitionCrossDissolve
                             animations:^{[blockCell.flickrImage setImage:flickrImage.image];}
                             completion:^(BOOL finished) {
+                                
                             }];
             
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
@@ -288,6 +327,35 @@
     }
     
     return cell;
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.searchBar resignFirstResponder];
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    
+    NSString *query = searchBar.text;
+    NSCharacterSet *charSet = [NSCharacterSet whitespaceCharacterSet];
+    NSString *trimmedString = [query stringByTrimmingCharactersInSet:charSet];
+    
+    if ([trimmedString isEqualToString:@""]) {
+        searchBar.text = nil;
+        return;
+    }
+    
+    [self reloadImagesWithQuery:query];
+}
+
+- (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text = nil;
+    [searchBar resignFirstResponder];
 }
 
 @end

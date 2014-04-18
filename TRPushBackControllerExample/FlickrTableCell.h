@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#define kFlickrTableCellHeight 400.0f
-
 @interface FlickrTableCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UIButton *bufferButton;
 @property (nonatomic, weak) IBOutlet UIImageView *flickrImage;
+
+@property (nonatomic, weak) IBOutlet UILabel *photographerLabel;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
 - (IBAction)bufferButtonTapped:(id)sender;
 

@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "TRPushBackController.h"
 
-@interface FlickrViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface FlickrViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *table;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicator;
+@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 
 @end

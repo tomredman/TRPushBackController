@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define kFlickrTableCellMaxHeight 500.0f
+#define kFlickrTableCellMinHeight 300.0f
+
 @interface FlickrImage : NSObject
 
 @property (nonatomic, strong) UIImage *image;
@@ -15,5 +18,7 @@
 
 @property (nonatomic, strong) NSString *photographer;
 @property (nonatomic, strong) NSString *title;
+
+- (CGFloat)height;
 
 @end

@@ -12,6 +12,6 @@ typedef void (^NewImageBlock)(NSArray *newFlickrImages);
 
 @interface FlickrManager : NSObject
 
-- (void)getNewImages:(NewImageBlock)newImageBlock;
+- (void)getNewImagesWithSearchTerm:(NSString *)searchTerm completion:(NewImageBlock)newImageBlock;
 
 @end
