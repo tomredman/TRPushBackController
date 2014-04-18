@@ -189,6 +189,7 @@
 				8EEB77AD18FB4CD3008C39C7 /* TRPushBackControllerExampleTests */,
 				8EEB778718FB4CD3008C39C7 /* Frameworks */,
 				8EEB778618FB4CD3008C39C7 /* Products */,
+				8E2A00BD18FE155000C227E4 /* Podfile */,
 				15C018596EE2481EA60EF298 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -218,13 +219,12 @@
 		8EEB778E18FB4CD3008C39C7 /* TRPushBackControllerExample */ = {
 			isa = PBXGroup;
 			children = (
-				8E2A00BD18FE155000C227E4 /* Podfile */,
-				8E2A00B418FE129C00C227E4 /* Managers */,
 				8EEB779718FB4CD3008C39C7 /* AppDelegate.h */,
 				8EEB779818FB4CD3008C39C7 /* AppDelegate.m */,
 				8E2A00A218FDFFB900C227E4 /* Controllers */,
 				8E2A00A318FDFFC000C227E4 /* Views */,
 				8E2A00A418FDFFC600C227E4 /* Models */,
+				8E2A00B418FE129C00C227E4 /* Managers */,
 				8EDEE37518FE1DD7001FCA1E /* Resources */,
 				8E3EF7771901651100AE797B /* Categories */,
 				8EEB77A018FB4CD3008C39C7 /* Images.xcassets */,

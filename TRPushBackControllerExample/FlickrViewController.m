@@ -312,16 +312,16 @@
             
             flickrImage.image = image;
             
-            //Update height to match new image
-            [self.table beginUpdates];
-            [self.table endUpdates];
-            
             [UIView transitionWithView:blockCell.flickrImage
                               duration:1.0f
                                options:UIViewAnimationOptionTransitionCrossDissolve
-                            animations:^{[blockCell.flickrImage setImage:flickrImage.image];}
+                            animations:^{
+                                //Update height to match new image
+                                [self.table beginUpdates];
+                                [self.table endUpdates];
+                                [blockCell.flickrImage setImage:flickrImage.image];
+                            }
                             completion:^(BOOL finished) {
-                                
                             }];
             
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
