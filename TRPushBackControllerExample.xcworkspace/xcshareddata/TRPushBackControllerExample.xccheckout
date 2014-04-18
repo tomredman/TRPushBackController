@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>64DC6A1A-F68E-4754-B9C9-268889C29298</string>
+	<string>0F07A9A3-EFAA-46AC-9024-E16004C77764</string>
 	<key>IDESourceControlProjectName</key>
 	<string>TRPushBackControllerExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CD5FA0CC-0B8D-4C3D-8B4F-758F7E1A1DBB</key>
+		<key>EBE34D3D-1A49-422F-BAFE-6313E40E5B87</key>
 		<string>https://github.com/tomredman/TRPushBackController.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TRPushBackControllerExample.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CD5FA0CC-0B8D-4C3D-8B4F-758F7E1A1DBB</key>
+		<key>EBE34D3D-1A49-422F-BAFE-6313E40E5B87</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CD5FA0CC-0B8D-4C3D-8B4F-758F7E1A1DBB</string>
+	<string>EBE34D3D-1A49-422F-BAFE-6313E40E5B87</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CD5FA0CC-0B8D-4C3D-8B4F-758F7E1A1DBB</string>
+			<string>EBE34D3D-1A49-422F-BAFE-6313E40E5B87</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TRPushBackController</string>
 		</dict>
