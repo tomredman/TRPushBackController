@@ -14,87 +14,73 @@
 - (void)getNewImages:(NewImageBlock)newImageBlock
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObjects:@"application/x-javascript", @"application/json", @"text/javascript", @"text/x-javascript", @"text/x-json", nil]];
     
-    [manager GET:@"http://api.flickr.com/services/feeds/photos_public.gne?tag=sunset&lang=en-us&format=json&nojsoncallback=1" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    // Need to use HTTP serializer because Flickr's feed
+    // returns invalid JSON so the JSON serializer throws errors
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    [manager GET:@"http://api.flickr.com/services/feeds/photos_public.gne?format=json&lang=en-us&nojsoncallback=1&tags=sunset,landscape" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSError *error = nil;
         
-        NSString *responseString = [operation.responseString stringByReplacingOccurrencesOfString:@"\\'" withString:@"'"];
+        //NSData *santizedData = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
         
-        NSData *santizedData = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+        //Flickr incorrectly tries to escape single quotes - this is invalid JSON (see http://stackoverflow.com/a/2275428/423565)
+        //correct by removing escape slash (note NSString also uses \ as escape character - thus we need to use \\)
+         NSString *correctedJSONString = [operation.responseString stringByReplacingOccurrencesOfString:@"\\'" withString:@"'"];
         
-        NSDictionary *imagesDict = [NSJSONSerialization JSONObjectWithData:santizedData options:NSJSONReadingAllowFragments error:&error];
+        //re-encode the now correct string representation of JSON back to a NSData object which can be parsed by NSJSONSerialization
+        NSData *correctedData = [correctedJSONString dataUsingEncoding:NSUTF8StringEncoding];
         
-        if (!error){
-            NSArray *images = imagesDict[@"items"];
-            if (!images) {
-                if (newImageBlock) {
-                    newImageBlock(nil);
-                }
-                return;
-            }
-            
-            NSMutableArray *allImages = [@[] mutableCopy];
-            
-            for (NSDictionary *image in images) {
-                FlickrImage *flickrImage = [[FlickrImage alloc] init];
-                flickrImage.photographer = image[@"author"];
-                
-                NSString *urlString = image[@"media"][@"m"];
-                
-                if (urlString) {
-                    flickrImage.imageURL = [NSURL URLWithString:urlString];
-                    
-                    /**
-                     *  Only add the flickrImage if there is an image to view
-                     */
-                    [allImages addObject:flickrImage];
-                }
-            }
-            
-            /**
-             *  SUCCESS
-             */
-            if (newImageBlock) {
-                newImageBlock(allImages);
-            }
-            
-        }
-        else {
+        NSDictionary *imagesDict = [NSJSONSerialization JSONObjectWithData:correctedData options:NSJSONReadingAllowFragments error:&error];
+        
+        if (error){
             if (newImageBlock) {
                 newImageBlock(nil);
             }
             return;
         }
-
+        
+        NSArray *images = imagesDict[@"items"];
+        
+        if (!images) {
+            if (newImageBlock) {
+                newImageBlock(nil);
+            }
+            return;
+        }
+        
+        NSMutableArray *allImages = [@[] mutableCopy];
+        
+        for (NSDictionary *image in images) {
+            
+            FlickrImage *flickrImage = [[FlickrImage alloc] init];
+            flickrImage.photographer = image[@"author"];
+            
+            NSString *urlString = image[@"media"][@"m"];
+            
+            if (urlString) {
+                flickrImage.imageURL = [NSURL URLWithString:urlString];
+                
+                /**
+                 *  Only add the flickrImage if there is an image URL
+                 */
+                [allImages addObject:flickrImage];
+            }
+        }
+        
+        /**
+         *  SUCCESS
+         */
+        if (newImageBlock) {
+            newImageBlock(allImages);
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        newImageBlock(nil);
-    }];
-    
-    return;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
-        NSMutableArray *images = [@[] mutableCopy];
-        
-        for (int i = 1; i <= 8; i++) {
-            FlickrImage *newImage = [[FlickrImage alloc] init];
-            newImage.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://tomredman.ca/pics/%d.jpg", i]];
-            newImage.photographer = @"Tom Redman";
-            [images addObject:newImage];
-        }
-        
-        [NSThread sleepForTimeInterval:4.0];
-        
         if (newImageBlock) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                newImageBlock(images);
-            });
+            newImageBlock(nil);
         }
-        
-    });
+    }];
 }
 
 @end

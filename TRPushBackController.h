@@ -13,6 +13,8 @@ extern NSString * const kNotificationDidPushBack;
 extern NSString * const kNotificationWillPullForward;
 extern NSString * const kNotificationDidPullForward;
 
+typedef void(^Completion)();
+
 typedef NS_ENUM(NSInteger, TRPushBackSliderDirection) {
     TRPushBackSliderDirectionLeft = 0,
     TRPushBackSliderDirectionRight
@@ -21,6 +23,7 @@ typedef NS_ENUM(NSInteger, TRPushBackSliderDirection) {
 @interface TRPushBackController : UIViewController
 
 @property (nonatomic) CGFloat pushBackDistance;
+@property (nonatomic) BOOL isPushedBack;
 @property (nonatomic, strong) UIViewController *rootViewController;
 @property (nonatomic, strong) UIViewController *leftViewController;
 @property (nonatomic, strong) UIViewController *rightViewController;
@@ -55,6 +58,7 @@ typedef NS_ENUM(NSInteger, TRPushBackSliderDirection) {
  * `kNotificationDidPushBack` notifications.
  */
 - (void)pushBack;
+- (void)pushBackWithCompletion:(Completion)completion;
 
 /** Performs the pull forward animation
  *
@@ -62,6 +66,7 @@ typedef NS_ENUM(NSInteger, TRPushBackSliderDirection) {
  * `kNotificationDidPullForward` notifications.
  */
 - (void)pullForward;
+- (void)pullForwardWithCompletion:(Completion)completion;
 
 /**-----------------------------------------------------------------------------
  * @name Adding root, left and right view controllers

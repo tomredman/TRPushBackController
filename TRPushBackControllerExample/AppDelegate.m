@@ -14,22 +14,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.0 green:164.0/255.0 blue:120.0/255.0 alpha:1.0]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0f]}];
-    
-    self.pushBackController               = [TRPushBackController controller];
-    FlickrViewController *flickrVC        = [[FlickrViewController alloc] initWithNibName:@"FlickrViewController" bundle:nil];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:flickrVC];
-    
-    [self.pushBackController setRootViewController:navController];
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = self.pushBackController;
-    [self.window makeKeyAndVisible];
+    [self configureAppearance];
+    [self configureViewControllers];
+    [self configureWindow];
     
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -55,6 +46,28 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)configureAppearance
+{
+    [[UINavigationBar appearance] setBarTintColor:[UIColor themeColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0f]}];
+}
+
+- (void)configureViewControllers
+{
+    self.pushBackController               = [TRPushBackController controller];
+    FlickrViewController *flickrVC        = [[FlickrViewController alloc] initWithNibName:@"FlickrViewController" bundle:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:flickrVC];
+    
+    [self.pushBackController setRootViewController:navController];
+}
+
+- (void)configureWindow
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.pushBackController;
+    [self.window makeKeyAndVisible];
 }
 
 + (TRPushBackController *)pushBackController

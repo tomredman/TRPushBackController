@@ -34,12 +34,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Buffer Pix";
     
+    [self configureNavigationTitle];
     [self configureNavigationButtons];
     [self configureTable];
     [self configureFlickrManager];
-    [self addPushObservers];
+    [self reloadImagesWithPushBack:NO];
 }
 
 - (void)dealloc
@@ -55,7 +55,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -63,28 +62,31 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (void)configureNavigationTitle
+{
+    UIButton *navTitleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    navTitleButton.frame = CGRectMake(0, 0, 100, 44);
+    [navTitleButton setImage:[UIImage imageNamed:@"buffer-nav"] forState:UIControlStateNormal];
+    [navTitleButton addTarget:self action:@selector(togglePush) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.titleView = navTitleButton;
+}
+
+
 - (void)configureNavigationButtons
 {
-    UIBarButtonItem *pushBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStylePlain target:self action:@selector(reloadImages)];
-    [pushBackButton setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateNormal];
-    [self.navigationItem setRightBarButtonItem:pushBackButton];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(reloadImages)];
+    [refreshButton setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateNormal];
+    [self.navigationItem setRightBarButtonItem:refreshButton];
 }
 
 - (void)configureTable
 {
-    //[self.table registerClass:[FlickrTableCell class] forCellReuseIdentifier:@"FlickrCell"];
     [self.table registerNib:[UINib nibWithNibName:@"FlickrTableCell" bundle:nil] forCellReuseIdentifier:@"FlickrCell"];
 }
 
 - (void)configureFlickrManager
 {
     self.flickrManager = [[FlickrManager alloc] init];
-}
-
-- (void)addPushObservers
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRefreshHUD) name:kNotificationDidPushBack object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissRefreshHUD) name:kNotificationDidPullForward object:nil];
 }
 
 - (void)showRefreshHUD
@@ -99,28 +101,108 @@
 
 - (void)togglePush
 {
-    [[AppDelegate pushBackController] togglePush];
+    if ([[AppDelegate pushBackController] isPushedBack]) {
+        [self pullForwardCancelHUD:NO];
+    }
+    else {
+        [self pushBackShowHUD:NO];
+    }
+}
+
+- (void)pullForwardCancelHUD:(BOOL)cancelHUD
+{
+    __weak FlickrViewController *weakSelf = self;
+    [[AppDelegate pushBackController] pullForwardWithCompletion:^{
+        if (cancelHUD) {
+            [weakSelf dismissRefreshHUD];
+        }
+    }];
+}
+
+- (void)pullForward
+{
+    [self pullForwardCancelHUD:NO];
+}
+
+- (void)pushBackShowHUD:(BOOL)showHUD
+{
+    __weak FlickrViewController *weakSelf = self;
+    [[AppDelegate pushBackController] pushBackWithCompletion:^{
+        if (showHUD) {
+            [weakSelf showRefreshHUD];
+        }
+    }];
+}
+
+- (void)pushBack
+{
+    [self pushBackShowHUD:NO];
+}
+
+- (void)reloadImagesWithPushBack:(BOOL)pushBackToggle
+{
+    if (pushBackToggle) {
+        [self pushBackShowHUD:YES];
+    }
+    
+    __weak FlickrViewController *weakSelf = self;
+    
+    static NSInteger retryCount    = 0;
+    static NSInteger maxRetryCount = 5;
+    
+    NSDate *startTime = [NSDate date];
+    
+    [self.flickrManager getNewImages:^(NSArray *newFlickrImages) {
+        
+        /**
+         *  Handle bad Flickr feed
+         */
+        if (!newFlickrImages) {
+            
+            retryCount++;
+            
+            if (retryCount == maxRetryCount) {
+                retryCount = 0;
+                [SVProgressHUD showErrorWithStatus:@"Darn. We tried and failed. Feel free to hit Refresh."];
+                [weakSelf pullForwardCancelHUD:YES];
+                return;
+            }
+            
+            NSString *status = [NSString stringWithFormat:@"Oops, Flickr is being fickle. Trying again...\n\n%ld of %ld", (long)retryCount, (long)maxRetryCount];
+            [SVProgressHUD showWithStatus:status maskType:SVProgressHUDMaskTypeGradient];
+            
+            // Recurse back here
+            [weakSelf reloadImages];
+            
+            return;
+        }
+        
+        /**
+         *  Success!
+         */
+        NSTimeInterval elapsedTime = -[startTime timeIntervalSinceNow];
+        CGFloat delay = 0.0f;
+        
+        if (elapsedTime < 1.0) {
+            delay = 2.0f;
+        }
+        
+        [weakSelf newImagesSuccess:newFlickrImages delay:delay];
+    }];
+}
+
+- (void)newImagesSuccess:(NSArray *)newImages delay:(CGFloat)delay
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.flickrs = newImages;
+        [self.table reloadData];
+        [self pullForwardCancelHUD:YES];
+    });
 }
 
 - (void)reloadImages
 {
-    [self togglePush];
-    
-    __weak FlickrViewController *weakSelf = self;
-    [self.flickrManager getNewImages:^(NSArray *newFlickrImages) {
-        
-        if (!newFlickrImages) {
-            
-            [SVProgressHUD showErrorWithStatus:@"Oops, Flickr is being fickle. Try again."];
-            [weakSelf togglePush];
-            return;
-        }
-
-        weakSelf.flickrs = newFlickrImages;
-        [weakSelf.table reloadData];
-        [weakSelf togglePush];
-        [SVProgressHUD dismiss];
-    }];
+    [self reloadImagesWithPushBack:YES];
 }
 
 - (void)bufferButtonTapped:(UIButton *)button
@@ -140,9 +222,14 @@
 
 #pragma mark - Table view data source
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 315.0f;
+    return kFlickrTableCellHeight;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

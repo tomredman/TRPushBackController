@@ -27,8 +27,10 @@ NSString *kAnimationIdentifierPullForward = @"pullForwardAnimation";
 
 @interface TRPushBackController ()
 
-@property (nonatomic) BOOL isPushedBack;
 @property (nonatomic) BOOL useImageForStatusBar;
+
+@property (nonatomic, strong) Completion pushBackCompletion;
+@property (nonatomic, strong) Completion pullForwardCompletion;
 
 @end
 
@@ -94,19 +96,35 @@ NSString *kAnimationIdentifierPullForward = @"pullForwardAnimation";
     }
 }
 
+- (void)pushBackWithCompletion:(Completion)completion
+{
+    self.pushBackCompletion = completion;
+    [self pushBack];
+}
+
+- (void)pullForwardWithCompletion:(Completion)completion
+{
+    self.pullForwardCompletion = completion;
+    [self pullForward];
+}
+
 - (void)pushBack
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWillPushBack object:nil];
-    self.isPushedBack = YES;
-    self.view.userInteractionEnabled = NO;
-    [self useImageForStatusBar:YES];
-    [self.view.layer addAnimation:[self pushAnimationGroup:TRPushDirectionPushBack] forKey:kAnimationIdentifierPushBack];
+    if (!self.isPushedBack) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWillPushBack object:nil];
+        self.isPushedBack = YES;
+        self.view.userInteractionEnabled = NO;
+        [self useImageForStatusBar:YES];
+        [self.view.layer addAnimation:[self pushAnimationGroup:TRPushDirectionPushBack] forKey:kAnimationIdentifierPushBack];
+    }
 }
 
 - (void)pullForward
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWillPullForward object:nil];
-    [self.view.layer addAnimation:[self pushAnimationGroup:TRPushDirectionPullForward] forKey:kAnimationIdentifierPullForward];
+    if (self.isPushedBack) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWillPullForward object:nil];
+        [self.view.layer addAnimation:[self pushAnimationGroup:TRPushDirectionPullForward] forKey:kAnimationIdentifierPullForward];
+    }
 }
 
 - (void)setRootViewController:(UIViewController *)viewController
@@ -215,6 +233,11 @@ NSString *kAnimationIdentifierPullForward = @"pullForwardAnimation";
 
 - (void)pushBackDidComplete
 {
+    if (self.pushBackCompletion) {
+        self.pushBackCompletion();
+        self.pushBackCompletion = nil;
+    }
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDidPushBack object:nil];
 }
 
@@ -222,6 +245,12 @@ NSString *kAnimationIdentifierPullForward = @"pullForwardAnimation";
 {
     self.isPushedBack = NO;
     [self useImageForStatusBar:NO];
+    
+    if (self.pullForwardCompletion) {
+        self.pullForwardCompletion();
+        self.pullForwardCompletion = nil;
+    }
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDidPullForward object:nil];
 }
 

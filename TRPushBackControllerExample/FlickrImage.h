@@ -11,7 +11,9 @@
 @interface FlickrImage : NSObject
 
 @property (nonatomic, strong) UIImage *image;
-@property (nonatomic, strong) NSString *photographer;
 @property (nonatomic, strong) NSURL *imageURL;
+
+@property (nonatomic, strong) NSString *photographer;
+@property (nonatomic, strong) NSString *title;
 
 @end
