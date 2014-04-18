@@ -80,6 +80,9 @@
 
 - (void)configureTable
 {
+    /**
+     *  TODO: Optimize for 3.5" devices
+     */
     [self.table registerNib:[UINib nibWithNibName:@"FlickrTableCell" bundle:nil] forCellReuseIdentifier:@"FlickrCell"];
 }
 
